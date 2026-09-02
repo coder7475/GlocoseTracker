@@ -6,9 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, globalStyles } from '@/styles/global';
 
 export default function AddMealScreen() {
+  const insets = useSafeAreaInsets();
   const [name, setName] = useState('');
   const [calories, setCalories] = useState('');
   const [protein, setProtein] = useState('');
@@ -20,7 +22,7 @@ export default function AddMealScreen() {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <View style={[globalStyles.container, { paddingTop: insets.top + 16, paddingHorizontal: 20 }]}>
       <Text style={globalStyles.title}>Add Meal</Text>
 
       <TextInput

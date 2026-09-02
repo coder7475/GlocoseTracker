@@ -4,7 +4,7 @@ import MealItem from './MealItem';
 
 export default function RecentMeals() {
   return (
-    <View style={{ marginTop: 30 }}>
+    <View style={{ marginTop: 1 }}>
       <Text style={globalStyles.sectionTitle}>Recent Meals</Text>
       <MealItem
         name='Chicken & Rice'
