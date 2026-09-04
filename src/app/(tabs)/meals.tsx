@@ -1,8 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { globalStyles } from '@/styles/global';
 import { Link } from 'expo-router';
-import { Text, ScrollView } from 'react-native';
 
 export default function MealsScreen() {
   const insets = useSafeAreaInsets();
