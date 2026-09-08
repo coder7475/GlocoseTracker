@@ -34,7 +34,7 @@ export default function HomeScreen() {
     >
       <Text style={globalStyles.title}>Glocose Tracker</Text>
       <HomeHeader />
-      <MacroGrid />
+      <MacroGrid meals={meals} />
       <RecentMeals meals={meals} />
     </ScrollView>
   );
