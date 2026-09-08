@@ -9,11 +9,11 @@ export type Meal = {
   fat: number;
   createdAt: string;
 }
-const MEAL_KEY = 'meals';
+const MEALS_KEY = 'meals';
 
 
 export const getMeals = async (): Promise<Meal[]> => {
-  const data = await AsyncStorage.getItem(MEAL_KEY);
+  const data = await AsyncStorage.getItem(MEALS_KEY);
   return data ? JSON.parse(data) : [];
 }
 
@@ -28,7 +28,7 @@ export const addMeal = async (
     createdAt: new Date().toISOString()
   }
 
-  await AsyncStorage.setItem(MEAL_KEY, JSON.stringify([newMeal, ...meals]));
+  await AsyncStorage.setItem(MEALS_KEY, JSON.stringify([newMeal, ...meals]));
   return newMeal;
 }
 
@@ -36,4 +36,8 @@ export const deleteMeal = async (id: string): Promise<void> => {
   const meals = await getMeals();
   const filtered = meals.filter((meal) => meal.id !== id);
   await AsyncStorage.setItem(MEALS_KEY, JSON.stringify(filtered));
+};
+
+export const clearAllMeals = async (): Promise<void> => {
+  await AsyncStorage.removeItem(MEALS_KEY);
 };
