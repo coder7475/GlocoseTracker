@@ -4,9 +4,18 @@ import { globalStyles } from "@/styles/global";
 import HomeHeader from "@/components/HomeHeader";
 import MacroGrid from "@/components/MacroGrid";
 import RecentMeals from "@/components/RecentMeals";
+import { getMeals, type Meal } from "@/storage/meals";
+import { useState } from "react";
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
+  const [meals, setMeals] = useState<Meal[]>();
+
+  const loadMeals = async () => {
+    const data = await getMeals();
+    setMeals(data);
+    console.log("Loaded Meals: ", data);
+  }
 
   return (
     <ScrollView

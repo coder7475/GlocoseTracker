@@ -6,6 +6,7 @@ export type Meal = {
   calories: number;
   protein: number;
   carbs: number;
+  fat: number;
   createdAt: string;
 }
 const MEAL_KEY = 'meals';
@@ -17,7 +18,7 @@ export const getMeals = async (): Promise<Meal[]> => {
 }
 
 export const addMeal = async (
-  meal: Omit<Meal, 'id'>
+  meal: Omit<Meal, 'id' | 'createdAt'>
 ): Promise<Meal> => {
   const meals = await getMeals();
 

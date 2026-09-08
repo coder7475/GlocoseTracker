@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  Alert,
   StyleSheet,
   Text,
   TextInput,
@@ -8,6 +9,8 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, globalStyles } from '@/styles/global';
+import { addMeal } from '@/storage/meals';
+import { router } from 'expo-router';
 
 export default function AddMealScreen() {
   const insets = useSafeAreaInsets();
@@ -17,8 +20,30 @@ export default function AddMealScreen() {
   const [carbs, setCarbs] = useState('');
   const [fat, setFat] = useState('');
 
-  const handleAddMeal = () => {
-    console.log({ name, calories, protein, carbs, fat });
+  const handleAddMeal = async () => {
+    if (!name || !calories) {
+      Alert.alert("Error", "Please Enter a meal name and calories")
+      return;
+    }
+
+    await addMeal({
+      name,
+      calories: Number(calories),
+      protein: Number(calories) || 0,
+      carbs: Number(carbs) || 0,
+      fat: Number(fat) || 0
+    });
+
+
+    setName("");
+    setCalories("");
+    setProtein("");
+    setCarbs("");
+    setFat("");
+
+    Alert.alert("Success", "Meal Added Successfully!");
+
+    router.push("/");
   };
 
   return (
