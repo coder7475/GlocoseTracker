@@ -11,6 +11,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, globalStyles } from '@/styles/global';
 import { addMeal } from '@/storage/meals';
 import { router } from 'expo-router';
+import * as Haptics from 'expo-haptics';
+
 
 export default function AddMealScreen() {
   const insets = useSafeAreaInsets();
@@ -42,6 +44,7 @@ export default function AddMealScreen() {
     setFat("");
 
     Alert.alert("Success", "Meal Added Successfully!");
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
     router.push("/");
   };

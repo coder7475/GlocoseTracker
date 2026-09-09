@@ -29,8 +29,8 @@ export default function AllMealsScreen() {
       <View style={globalStyles.header}>
         <Text style={globalStyles.title}>All Meals</Text>
         <TouchableOpacity onPress={handleClearAll}>
-          <Text style={styles.clearButton}>Clear All</Text>
         </TouchableOpacity>
+        <Text style={styles.clearButton}>Clear All</Text>
       </View>
       <View style={{ marginTop: 30 }}>
         {meals.length === 0 ? (
