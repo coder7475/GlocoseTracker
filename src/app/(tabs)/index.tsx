@@ -8,6 +8,7 @@ import { getMeals, type Meal } from "@/storage/meals";
 import { useCallback, useState } from "react";
 import { useFocusEffect } from "expo-router";
 import ShareButton from "@/components/ShareButton";
+import CopyButton from '@/components/CopyButton';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
@@ -39,6 +40,7 @@ export default function HomeScreen() {
       </View>
       <HomeHeader />
       <MacroGrid meals={meals} />
+      <CopyButton meals={meals} />
       <RecentMeals meals={meals} onDelete={loadMeals} />
     </ScrollView>
   );
