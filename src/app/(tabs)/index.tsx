@@ -9,6 +9,7 @@ import { useCallback, useState } from "react";
 import { useFocusEffect } from "expo-router";
 import ShareButton from "@/components/ShareButton";
 import CopyButton from '@/components/CopyButton';
+import ReminderToggle from '@/components/ReminderToggle';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
@@ -17,7 +18,7 @@ export default function HomeScreen() {
   const loadMeals = async () => {
     const data = await getMeals();
     setMeals(data);
-    console.log("Loaded Meals: ", data);
+    // console.log("Loaded Meals: ", data);
   };
 
   useFocusEffect(
@@ -41,6 +42,7 @@ export default function HomeScreen() {
       <HomeHeader />
       <MacroGrid meals={meals} />
       <CopyButton meals={meals} />
+      <ReminderToggle />
       <RecentMeals meals={meals} onDelete={loadMeals} />
     </ScrollView>
   );
