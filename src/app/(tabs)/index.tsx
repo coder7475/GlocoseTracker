@@ -1,4 +1,4 @@
-import { ScrollView, Text, StyleSheet } from "react-native";
+import { ScrollView, Text, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { globalStyles } from "@/styles/global";
 import HomeHeader from "@/components/HomeHeader";
@@ -7,6 +7,7 @@ import RecentMeals from "@/components/RecentMeals";
 import { getMeals, type Meal } from "@/storage/meals";
 import { useCallback, useState } from "react";
 import { useFocusEffect } from "expo-router";
+import ShareButton from "@/components/ShareButton";
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
@@ -32,7 +33,10 @@ export default function HomeScreen() {
         { paddingTop: insets.top + 16, paddingHorizontal: 20 },
       ]}
     >
-      <Text style={globalStyles.title}>Glocose Tracker</Text>
+      <View style={globalStyles.header}>
+        <Text style={globalStyles.title}>Glocose Tracker</Text>
+        <ShareButton meals={meals} />
+      </View>
       <HomeHeader />
       <MacroGrid meals={meals} />
       <RecentMeals meals={meals} onDelete={loadMeals} />
