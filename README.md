@@ -88,6 +88,39 @@ pnpm run android
 pnpm run web
 ```
 
+## Building & Deploying with EAS
+
+### Prerequisites
+
+```bash
+npm install -g eas-cli
+eas login
+```
+
+### Build Commands
+
+| Platform | Profile | Command |
+|----------|---------|---------|
+| Android | Preview (APK) | `eas build -p android --profile preview` |
+| Android | Production (AAB) | `eas build -p android --profile production` |
+| iOS | Preview | `eas build -p ios --profile preview` |
+| iOS | Production | `eas build -p ios --profile production` |
+
+### Submit to App Stores
+
+```bash
+eas submit -p android --profile production
+eas submit -p ios --profile production
+```
+
+### Credential Management
+
+```bash
+eas credentials
+```
+
+For more details, see the [EAS Build documentation](https://docs.expo.dev/build/introduction/).
+
 ## Available Scripts
 
 | Script | Description |
