@@ -1,3 +1,7 @@
+import { addMeal } from '@/storage/meals';
+import { colors, globalStyles } from '@/styles/global';
+import * as Haptics from 'expo-haptics';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import {
   Alert,
@@ -8,10 +12,6 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, globalStyles } from '@/styles/global';
-import { addMeal } from '@/storage/meals';
-import { router } from 'expo-router';
-import * as Haptics from 'expo-haptics';
 
 
 export default function AddMealScreen() {
@@ -31,7 +31,7 @@ export default function AddMealScreen() {
     await addMeal({
       name,
       calories: Number(calories),
-      protein: Number(calories) || 0,
+      protein: Number(protein) || 0,
       carbs: Number(carbs) || 0,
       fat: Number(fat) || 0
     });

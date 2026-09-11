@@ -1,50 +1,117 @@
-# Welcome to your Expo app 👋
+# GlucoseTracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A nutrition and macro-tracking mobile app built with Expo and React Native. Log meals, track daily calories and macronutrients (protein, carbs, fat), and get meal reminders via push notifications.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Daily Macro Tracking** — View running totals for calories, protein, carbs, and fat against daily goals
+- **Meal Logging** — Add meals with name, calories, and macronutrient values
+- **Meal History** — Browse and manage all logged meals with delete support
+- **Share & Copy** — Share your daily summary or copy it to clipboard
+- **Meal Reminders** — Toggle push notification reminders at 12:00 and 18:00 daily
+- **Dark Theme** — Clean, dark-themed UI with haptic feedback
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+| Layer | Technology |
+|-------|------------|
+| Framework | Expo SDK 57 |
+| Router | expo-router (file-based) |
+| Language | TypeScript (strict mode) |
+| State | React `useState` + `useFocusEffect` |
+| Storage | AsyncStorage |
+| Notifications | expo-notifications |
+| Haptics | expo-haptics |
 
-   ```bash
-   npx expo start
-   ```
+## Project Structure
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+├── app/
+│   ├── _layout.tsx              # Root layout (Stack)
+│   └── (tabs)/
+│       ├── _layout.tsx          # Tab navigator (3 tabs)
+│       ├── index.tsx            # Home screen
+│       ├── add-meal.tsx         # Add Meal form
+│       └── meals.tsx            # All Meals list
+├── components/
+│   ├── HomeHeader.tsx           # Current date display
+│   ├── MacroGrid.tsx            # 2x2 macro card grid
+│   ├── MacroCard.tsx            # Single macro stat card
+│   ├── RecentMeals.tsx          # Top 5 recent meals
+│   ├── MealItem.tsx             # Single meal row
+│   ├── ShareButton.tsx          # Share daily summary
+│   ├── CopyButton.tsx           # Copy summary to clipboard
+│   └── ReminderToggle.tsx       # Notification toggle
+├── constants/
+│   └── theme.ts                 # Color tokens
+├── hooks/
+│   ├── use-color-scheme.ts      # Color scheme hook
+│   ├── use-color-scheme.web.ts  # Web-safe color scheme
+│   └── use-theme-color.ts       # Theme color resolver
+├── storage/
+│   └── meals.ts                 # AsyncStorage CRUD
+├── styles/
+│   └── global.ts                # App color palette
+└── utils/
+    └── notifications.ts         # Notification scheduling
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Getting Started
 
-## Learn more
+### Prerequisites
 
-To learn more about developing your project with Expo, look at the following resources:
+- Node.js 18+
+- pnpm (`npm install -g pnpm`)
+- For iOS: Xcode and CocoaPods
+- For Android: Android Studio and Android SDK
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Installation
 
-## Join the community
+```bash
+pnpm install
+```
 
-Join our community of developers creating universal apps.
+### Running the App
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+# Start the development server
+pnpm start
+
+# Run on iOS simulator
+pnpm run ios
+
+# Run on Android emulator
+pnpm run android
+
+# Run on web
+pnpm run web
+```
+
+## Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `pnpm start` | Start Expo development server |
+| `pnpm run android` | Start on Android |
+| `pnpm run ios` | Start on iOS |
+| `pnpm run web` | Start on web |
+| `pnpm run lint` | Run ESLint |
+| `pnpm run reset-project` | Reset project to starter template |
+
+## Learning Resources
+
+This project is inspired by [MacroZone](https://github.com/bradtraversy/macrozone) by Brad Traversy — a great reference for building a macro-tracking app with React Native and Expo. Check it out to learn more about:
+
+- React Native and Expo fundamentals
+- File-based routing with expo-router
+- Building nutrition and fitness tracking UIs
+- Working with AsyncStorage for local persistence
+
+## Known Issues
+
+See [IMPROVEMENTS.md](./IMPROVEMENTS.md) for a full list of bugs, architectural issues, and suggested improvements.
+
+## License
+
+Private project.

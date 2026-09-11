@@ -3,7 +3,7 @@ import { clearAllMeals, getMeals, Meal } from '@/storage/meals';
 import { globalStyles } from '@/styles/global';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function AllMealsScreen() {
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -13,9 +13,18 @@ export default function AllMealsScreen() {
     setMeals(data);
   };
 
-  const handleClearAll = async () => {
-    await clearAllMeals();
-    loadMeals();
+  const handleClearAll = () => {
+    Alert.alert('Clear All Meals', 'Are you sure you want to delete all meals?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Clear',
+        style: 'destructive',
+        onPress: async () => {
+          await clearAllMeals();
+          loadMeals();
+        },
+      },
+    ]);
   };
 
   useFocusEffect(
@@ -28,11 +37,11 @@ export default function AllMealsScreen() {
     <ScrollView style={globalStyles.container}>
       <View style={globalStyles.header}>
         <Text style={globalStyles.title}>All Meals</Text>
-        <TouchableOpacity onPress={handleClearAll}>
+        <TouchableOpacity style={styles.clearButton} onPress={handleClearAll}>
+          <Text style={styles.clearButtonText}>Clear All</Text>
         </TouchableOpacity>
-        <Text style={styles.clearButton}>Clear All</Text>
       </View>
-      <View style={{ marginTop: 30 }}>
+      <View style={styles.mealsList}>
         {meals.length === 0 ? (
           <Text style={globalStyles.empty}>No meals logged yet.</Text>
         ) : (
@@ -54,9 +63,18 @@ export default function AllMealsScreen() {
   );
 }
 
-const styles = {
+const styles = StyleSheet.create({
   clearButton: {
+    backgroundColor: 'rgba(255,0,0,0.15)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  clearButtonText: {
     color: 'red',
     fontSize: 16,
   },
-};
+  mealsList: {
+    marginTop: 30,
+  },
+});
