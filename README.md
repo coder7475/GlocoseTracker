@@ -141,10 +141,6 @@ This project is inspired by [MacroZone](https://github.com/bradtraversy/macrozon
 - Building nutrition and fitness tracking UIs
 - Working with AsyncStorage for local persistence
 
-## Known Issues
-
-See [IMPROVEMENTS.md](./IMPROVEMENTS.md) for a full list of bugs, architectural issues, and suggested improvements.
-
 ## License
 
 Private project.
