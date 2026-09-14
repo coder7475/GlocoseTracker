@@ -36,7 +36,7 @@ export default function HomeScreen() {
       ]}
     >
       <View style={globalStyles.header}>
-        <Text style={globalStyles.title}>Glocose Tracker</Text>
+        <Text style={globalStyles.title}>Glucose Tracker</Text>
         <ShareButton meals={meals} />
       </View>
       <HomeHeader />
