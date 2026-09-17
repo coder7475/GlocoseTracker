@@ -88,6 +88,12 @@ pnpm run android
 pnpm run web
 ```
 
+## Test APK
+
+Download the latest Android APK build for testing:
+
+[**Download APK**](https://expo.dev/accounts/coder7575/projects/glocosetracker/builds/6a91acfc-82a2-43a5-ad98-731e59fc3823)
+
 ## Building & Deploying with EAS
 
 ### Prerequisites
