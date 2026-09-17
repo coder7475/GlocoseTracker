@@ -4,8 +4,10 @@ import { globalStyles } from '@/styles/global';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function AllMealsScreen() {
+  const insets = useSafeAreaInsets();
   const [meals, setMeals] = useState<Meal[]>([]);
 
   const loadMeals = async () => {
@@ -34,7 +36,7 @@ export default function AllMealsScreen() {
   );
 
   return (
-    <ScrollView style={globalStyles.container}>
+    <ScrollView style={[globalStyles.container, { paddingTop: insets.top + 16, paddingHorizontal: 20 }]}>
       <View style={globalStyles.header}>
         <Text style={globalStyles.title}>All Meals</Text>
         <TouchableOpacity style={styles.clearButton} onPress={handleClearAll}>
