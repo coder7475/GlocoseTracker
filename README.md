@@ -2,6 +2,12 @@
 
 A nutrition and macro-tracking mobile app built with Expo and React Native. Log meals, track daily calories and macronutrients (protein, carbs, fat), and get meal reminders via push notifications.
 
+## Screenshots
+
+| Home | Add Meal | All Meals |
+|------|----------|-----------|
+| ![Home](README/Home.jpeg) | ![Add Meal](README/AddMeal.jpeg) | ![All Meals](README/AllMEAL.jpeg) |
+
 ## Features
 
 - **Daily Macro Tracking** — View running totals for calories, protein, carbs, and fat against daily goals
