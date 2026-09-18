@@ -141,6 +141,8 @@ For more details, see the [EAS Build documentation](https://docs.expo.dev/build/
 | `pnpm run android` | Start on Android |
 | `pnpm run ios` | Start on iOS |
 | `pnpm run web` | Start on web |
+| `pnpm run preview:android` | Build Android preview APK via EAS |
+| `pnpm run preview:ios` | Build iOS preview via EAS |
 | `pnpm run lint` | Run ESLint |
 | `pnpm run reset-project` | Reset project to starter template |
 
